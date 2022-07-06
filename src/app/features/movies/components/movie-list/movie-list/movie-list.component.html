@@ -1,0 +1,28 @@
+<div>
+    Search : <input type="text" id="txtSearch" name="txtSearch" #searchBox>
+    <button type="button" (click)="SearchMovies(searchBox.value)">Search</button>
+    <button type="button" (click)="goToAddMovie()" style="float: right;margin: 3px;">Add Movie</button>
+</div>
+<h3 style="color: red;">{{messageText}}</h3>
+<div class="main-div">
+    <mat-card class="main" *ngFor="let movie of movielist" class="movie-card">
+        <mat-card-header>
+            <div mat-card-avatar class="movie-header-image"></div>
+            <mat-card-title>{{movie.Title}}</mat-card-title>
+            <mat-card-subtitle><b>Release Date : </b>{{movie.ReleaseDate}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="{{movie.ImageURL}}"
+            alt="https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png" class="movie-image">
+        <mat-card-content>
+            <p>{{movie.Description}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+                <mat-icon>favorite</mat-icon> Add to Favourites
+            </button>
+            <button mat-icon-button class="example-icon add-icon" aria-label="Example icon-button with add icon">
+                <mat-icon>add</mat-icon> Add to Watch Later
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>

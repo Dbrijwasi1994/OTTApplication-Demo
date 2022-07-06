@@ -1,0 +1,17 @@
+<mat-toolbar color="primary" fixedInViewport="true" role="heading">
+    <mat-toolbar-row>
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="toggleSidenav()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <h1>{{ title }}</h1>
+        <span class="menu-spacer"></span>
+        <div>
+            <a mat-button [routerLink]="'/register'"> Register </a>
+            <a mat-button [routerLink]="'/login'"> Login </a>
+        </div>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row>
+        <span style="font-size: 12px;">OTT Application lets you easily watch your favourite movies and TV shows.</span>
+    </mat-toolbar-row>
+</mat-toolbar>

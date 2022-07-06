@@ -1,0 +1,32 @@
+import { Injectable } from '@angular/core';
+import { InMemoryDbService } from 'angular-in-memory-web-api'
+
+@Injectable({
+  providedIn: 'root'
+})
+export class InMemoryDatabaseService implements InMemoryDbService {
+
+  constructor() { }
+
+  createDb() {
+    let users = [
+      {ID : 1, Name : 'Deepak Brijwasi', Username : 'Dbrijwasi', Email : 'dbrijwasi@gmail.com', DateOfBirth : '13/11/1994', Phone : '+916398146244', Password : 'Root@12345', IsAdmin : true, IsPrimeMember : true},
+      {ID : 2, Name : 'Deepak Chandra Suyal', Username : 'Dsuyal92', Email : 'deepaksuyal128@gmail.com', DateOfBirth : '11/08/1992', Phone : '+919411399500', Password : 'Suyal@12345', IsAdmin : false, IsPrimeMember : false}
+    ];
+
+    let movies = [
+      {ImdbID : 'tt0499549', Title : 'Avatar' , Description : 'A paraplegic marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.', ReleaseDate : '18 Dec 2009', Director : 'James Cameron', Actors : 'Sam Worthington, Zoe Saldana, Sigourney Weaver, Stephen Lang', ImdbRating : 7.9, Language : 'English, Spanish', Genre : 'Action, Adventure, Fantasy', ImageURL : 'https://images-na.ssl-images-amazon.com/images/M/MV5BNzM2MDk3MTcyMV5BMl5BanBnXkFtZTcwNjg0MTUzNA@@._V1_SX1777_CR0,0,1777,999_AL_.jpg'},
+      {ImdbID : 'tt0480249', Title : 'I Am Legend', Description : 'Years after a plague kills most of humanity and transforms the rest into monsters, the sole survivor in New York City struggles valiantly to find a cure.', ReleaseDate : '14 Dec 2007', Director : 'Francis Lawrence', Actors : 'Will Smith, Alice Braga, Charlie Tahan, Salli Richardson-Whitfield', ImdbRating : 7.2, Language : 'English', Genre : 'Drama, Horror, Sci-Fi', ImageURL : 'https://images-na.ssl-images-amazon.com/images/M/MV5BMTA0MTI2NjMzMzFeQTJeQWpwZ15BbWU2MDMwNDc3OA@@._V1_.jpg'},
+      {ImdbID : 'tt0416449', Title : '300', Description : 'King Leonidas of Sparta and a force of 300 men fight the Persians at Thermopylae in 480 B.C.', ReleaseDate : '09 Mar 2007', Director : 'Zack Snyder', Actors : 'Gerard Butler, Lena Headey, Dominic West, David Wenham', ImdbRating : 7.7, Language : 'English', Genre : 'Action, Drama, Fantasy', ImageURL : 'https://images-na.ssl-images-amazon.com/images/M/MV5BMTMwNTg5MzMwMV5BMl5BanBnXkFtZTcwMzA2NTIyMw@@._V1_SX1777_CR0,0,1777,937_AL_.jpg'},
+      {ImdbID : 'tt0848228', Title : 'The Avengers', Description : 'Mightiest heroes of earth must come together and learn to fight as a team if they are to stop the mischievous Loki and his alien army from enslaving humanity.', ReleaseDate : '04 May 2012', Director : 'Joss Whedon', Actors : 'Robert Downey Jr., Chris Evans, Mark Ruffalo, Chris Hemsworth', ImdbRating : 8.1, Language : 'English', Genre : 'Action, Sci-Fi, Thriller', ImageURL : 'https://images-na.ssl-images-amazon.com/images/M/MV5BMjE1MzEzMjcyM15BMl5BanBnXkFtZTcwNDM4ODY3Nw@@._V1_SX1777_CR0,0,1777,999_AL_.jpg'},
+      {ImdbID : 'tt0993846', Title : 'The Wolf of Wall Street', Description : 'Based on the true story of Jordan Belfort, from his rise to a wealthy stock-broker living the high life to his fall involving crime, corruption and the federal government.', ReleaseDate : '25 Dec 2013', Director : 'Martin Scorsese', Actors : 'Leonardo DiCaprio, Jonah Hill, Margot Robbie, Matthew McConaughey', ImdbRating : 8.2, Language : 'English, French', Genre : 'Biography, Comedy, Crime', ImageURL : 'https://images-na.ssl-images-amazon.com/images/M/MV5BMTg3MTY4NDk4Nl5BMl5BanBnXkFtZTgwNjc0MzQ4MDE@._V1_SX1500_CR0,0,1500,999_AL_.jpg'},
+      {ImdbID : 'tt0816692', Title : 'Interstellar', Description : 'A team of explorers travel through a wormhole in space in an attempt to ensure survival of humanity.', ReleaseDate : '07 Nov 2014', Director : 'Christopher Nolan', Actors : 'Ellen Burstyn, Matthew McConaughey, Mackenzie Foy, John Lithgow', ImdbRating : 8.6, Language : 'English', Genre : 'Adventure, Drama, Sci-Fi', ImageURL : 'https://images-na.ssl-images-amazon.com/images/M/MV5BNjYzNjE2NDk3N15BMl5BanBnXkFtZTgwNzEyODgxMzE@._V1_SX1500_CR0,0,1500,999_AL_.jpg'},
+      {ImdbID : 'tt0944947', Title : 'Game of Thrones', Description : 'While a civil war brews between several noble families in Westeros, the children of the former rulers of the land attempt to rise up to power. Meanwhile a forgotten race, bent on destruction, plans to return after thousands of years in the North.', ReleaseDate : '17 Apr 2011', Director : 'David Benioff, D. B. Weiss', Actors : 'Peter Dinklage, Lena Headey, Emilia Clarke, Kit Harington', ImdbRating : 9.5, Language : 'English', Genre : 'Adventure, Drama, Fantasy', ImageURL : 'https://images-na.ssl-images-amazon.com/images/M/MV5BZjZkN2M5ODgtMjQ2OC00ZjAxLWE1MjMtZDE0OTNmNGM0NWEwXkEyXkFqcGdeQXVyNjUxNzgwNTE@._V1_SX1777_CR0,0,1777,999_AL_.jpg'},
+      {ImdbID : 'tt2306299', Title : 'Vikings', Description : 'The world of the Vikings is brought to life through the journey of Ragnar Lothbrok, the first Viking to emerge from Norse legend and onto the pages of history - a man on the edge of myth.', ReleaseDate : '03 Mar 2013', Director : 'Michael Hirst', Actors : 'Travis Fimmel, Clive Standen, Gustaf Skarsgård, Katheryn Winnick', ImdbRating : 8.6, Language : 'English, Old English, Norse, Old, Latin', Genre : 'Action, Drama, History', ImageURL : 'https://images-na.ssl-images-amazon.com/images/M/MV5BMTcxOTQ3NTA5N15BMl5BanBnXkFtZTgwMzExMDUxODE@._V1_SY1000_SX1500_AL_.jpg'},
+      {ImdbID : 'tt2631186', Title : 'Baahubali: The Beginning', Description : 'In ancient India, an adventurous and daring man becomes involved in a decades-old feud between two warring peoples.', ReleaseDate : '10 July 2015', Director : 'S. S. Rajamouli', Actors : 'Prabhas, Rana Daggubati, Anushka Shetty, Tamannah Bhatia', ImdbRating : 8.0, Language : 'Hindi, Tamil, Telugu', Genre : 'Action, Drama, Fantasy', ImageURL : 'https://upload.wikimedia.org/wikipedia/en/8/86/Baahubali_characters.jpg'},
+      {ImdbID : 'tt8178634', Title : 'RRR', Description : 'A fictitious story about two legendary revolutionaries and their journey away from home before they started fighting for their country in 1920s.', ReleaseDate : '25 Mar 2022', Director : 'S. S. Rajamouli', Actors : 'N.T. Rama Rao Jr, Ram Charan, Ajay Devgn', ImdbRating : 8.0, Language : 'Hindi, Tamil, Telugu', Genre : 'Action, Drama', ImageURL : 'https://upload.wikimedia.org/wikipedia/en/d/d7/RRR_Poster.jpg'}
+    ];
+
+    return { users, movies };
+  }
+}

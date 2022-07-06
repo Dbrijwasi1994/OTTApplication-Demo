@@ -1,0 +1,16 @@
+<mat-sidenav-container>
+    <mat-sidenav #sidenav class="sidenav" opened="true" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false" [opened]="sidenavLayout">
+        <mat-nav-list>
+            <a mat-list-item [routerLink]="'/movielist'"> All Movies/Shows </a>
+            <a mat-list-item [routerLink]="'/create-account'"> Favourites </a>
+            <a mat-list-item [routerLink]="'/contacts'"> Watch Later </a>
+            <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <div style="height: 88vh;">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
